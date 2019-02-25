@@ -21,10 +21,32 @@ def extract_event_details(soup):
     return {'name': name, 'date': date}
 
 
+def extract_fights(soup):
+    """Groups rows with fighter names in pairs, each pair is a fight."""
+    fights = []
+
+    for span in soup.select('table.odds-table-responsive-header > tbody > tr > th > a > span'):
+        fighter_name = span.text
+        
+        if not len(fights) or len(fights[-1]) == 2:
+            fights.append([fighter_name,])
+            continue
+        
+        elif len(fights[-1]) == 1:
+            fights[-1].append(fighter_name)
+        
+        else:
+            raise ValueError('Number of fighter rows is not even.')
+        
+    return fights
+
+
 def scrape_event_page(url):
     soup = fetch_events_page_soup(url)
     event = extract_event_details(soup)
-    return event
+    fights = extract_fights(soup)
+
+    return fights
 
 
 if __name__ == '__main__':
