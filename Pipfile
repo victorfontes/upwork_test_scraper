@@ -11,6 +11,7 @@ rope = "*"
 requests = "*"
 beautifulsoup4 = "*"
 lxml = "*"
+dateparser = "*"
 
 [requires]
 python_version = "3.7"
