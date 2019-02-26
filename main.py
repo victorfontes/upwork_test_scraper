@@ -5,6 +5,8 @@ import requests
 from bs4 import BeautifulSoup
 import dateparser
 
+from data import create_event, create_fighter
+
 TEST_URL = 'https://www.bestfightodds.com/events/ufc-231-holloway-vs-ortega-1584'
 USER_AGENT = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36' }
 
@@ -46,7 +48,13 @@ def scrape_event_page(url):
     event = extract_event_details(soup)
     fights = extract_fights(soup)
 
-    return fights
+    event_id = create_event(event['name'], event['date'])
+
+    for fight in fights:
+        f1_id = create_fighter(fight[0])
+        f2_id = create_fighter(fight[1])
+
+    return ''
 
 
 if __name__ == '__main__':

@@ -12,6 +12,9 @@ requests = "*"
 beautifulsoup4 = "*"
 lxml = "*"
 dateparser = "*"
+psycopg2-binary = "*"
+python-decouple = "*"
+records = "*"
 
 [requires]
 python_version = "3.7"
