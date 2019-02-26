@@ -15,6 +15,7 @@ dateparser = "*"
 psycopg2-binary = "*"
 python-decouple = "*"
 records = "*"
+click = "*"
 
 [requires]
 python_version = "3.7"
