@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 bpython = "*"
 rope = "*"
+flake8 = "*"
 
 [packages]
 requests = "*"
