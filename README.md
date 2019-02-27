@@ -1,16 +1,25 @@
-# Coding Exercise Details:
-We will store our data in three database tables.
-One table is events, and the other table is fighters.
-Fighters table should only have id and name columns.
-Events table should only have id, name of event, and date of event.
-The final table is a junction table, as events and fights have a many-to-many relationship.
+# Scraper Coding Exercise:
 
-There is much more information available on the page, but for simplicity, this is all I am asking for.
+I tried to keep things functional and simple, so I skipped stuff like logging, retry system, etc. 
 
-Scrape this specific event page https://www.bestfightodds.com/events/ufc-231-holloway-vs-ortega-1584 to populate the database. So after you are done, you will have one event in the events table, and something like 20-30 fighters in the fighters table.
+Some comments:
+- I'm using records instead of psycopg2 directly, its a handy wrapper that makes things easier for small projects.
+- There is a command line to run the scraper and see the results of some querys.
+- Probably a Fight would be separate entity in real world because it has more attributes.
 
-Store in PostgreSQL cloud database. Create one. There are plenty of free options that you can spin up quickly, ElephantSQL being one, or Google Cloud, or one of your choice. Use whatever option you prefer.
-I recommend using the psycopg python library to connect to the database, but use your preference.
+## Usage:
 
-In a separate python file, write a query that returns all fighters whose last name starts with the letters 'A','B',or 'C'.
+```
+export DATABASE_URI="postgres://... credentials provided over chat"
+
+pipenv install
+pipenv shell
+
+./main.py scrape-event
+./main.py show-abc-fighters
+./main.py show-fights
+./main.py --help
+  
+```
+
 

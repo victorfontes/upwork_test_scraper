@@ -32,11 +32,5 @@ def show_fights():
     click.echo(rows.dataset)
 
 
-
-
-
-
-
-
 if __name__ == '__main__':
     cli()
